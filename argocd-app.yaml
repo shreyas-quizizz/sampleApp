@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sample-html-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: YOUR_GIT_REPO_URL # You'll need to replace this with your actual Git repo URL
+    targetRevision: HEAD
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true 
