@@ -9,12 +9,9 @@ spec:
     repoURL: https://github.com/shreyas-quizizz/sampleApp.git
     targetRevision: HEAD
     path: .
+    directory:
+      exclude: '*.json,*.js,*.html,*.sh,*.md'
+      include: '*.yaml,*.yml'
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true 
+    namespace: default 
