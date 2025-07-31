@@ -3,15 +3,18 @@ kind: Application
 metadata:
   name: sample-html-app
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/shreyas-quizizz/sampleApp.git
     targetRevision: HEAD
-    path: .
-    directory:
-      exclude: '*.json,*.js,*.html,*.sh,*.md'
-      include: '*.yaml,*.yml'
+    path: kubernetes
   destination:
     server: https://kubernetes.default.svc
-    namespace: default 
+    namespace: default
+  syncPolicy:
+    automated: null  # Explicitly disable auto-sync
+    syncOptions:
+    - CreateNamespace=true 
