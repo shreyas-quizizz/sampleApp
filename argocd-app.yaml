@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: YOUR_GIT_REPO_URL # You'll need to replace this with your actual Git repo URL
+    repoURL: https://github.com/shreyas-quizizz/sampleApp.git
     targetRevision: HEAD
     path: .
   destination:
